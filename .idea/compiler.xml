@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <bytecodeTargetLevel target="8" />
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="cache-api" options="-proc:none" />
+      <module name="cache-core" options="-proc:none" />
+      <module name="cache-test" options="-proc:none" />
+    </option>
+  </component>
+</project>

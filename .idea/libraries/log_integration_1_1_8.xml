@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="log-integration-1.1.8">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/github/houbb/log-integration/1.1.8/log-integration-1.1.8.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
