@@ -26,9 +26,9 @@ public class CacheEvictLru<K,V> extends AbstractCacheEvict<K,V> {
     @Override
     protected ICacheEntry<K, V> doEvict(ICacheEvictContext<K, V> context) {
         ICacheEntry<K, V> result = null;
-        final ICache<K,V> cache = context.cache();
+        final ICache<K,V> cache = context.getCache();
         // 超过限制，移除队尾的元素
-        if(cache.size() >= context.size()) {
+        if(cache.size() >= context.getSize()) {
             K evictKey = list.get(list.size()-1);
             V evictValue = cache.remove(evictKey);
             result = new CacheEntry<>(evictKey, evictValue);

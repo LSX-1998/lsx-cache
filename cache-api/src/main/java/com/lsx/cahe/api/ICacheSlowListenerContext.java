@@ -10,19 +10,19 @@ public interface ICacheSlowListenerContext {
      * 方法名称
      * @return 方法名称
      */
-    String methodName();
+    String getMethodName();
 
     /**
      * 参数信息
      * @return 参数列表
      */
-    Object[] params();
+    Object[] getParams();
 
     /**
      * 方法结果
      * @return 方法结果
      */
-    Object result();
+    Object getResult();
 
     /**
      * 开始时间

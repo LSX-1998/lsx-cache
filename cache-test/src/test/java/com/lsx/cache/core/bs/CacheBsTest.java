@@ -28,7 +28,7 @@ public class CacheBsTest {
     @Test
     public void helloTest() {
         ICache<String, String> cache = CacheBs.<String, String>newInstance()
-                .size(2)
+                .setSize(2)
                 .build();
 
         cache.put("1", "1");
@@ -47,9 +47,9 @@ public class CacheBsTest {
     @Test
     public void configTest() {
         ICache<String, String> cache = CacheBs.<String, String>newInstance()
-                .map(Maps.<String, String>hashMap())
-                .evict(CacheEvictUtil.<String, String>fifo())
-                .size(2)
+                .setMap(Maps.<String, String>hashMap())
+                .setEvict(CacheEvictUtil.<String, String>fifo())
+                .setSize(2)
                 .build();
 
         cache.put("1", "1");
@@ -68,7 +68,7 @@ public class CacheBsTest {
     @Test
     public void expireTest() throws InterruptedException {
         ICache<String, String> cache = CacheBs.<String, String>newInstance()
-                .size(3)
+                .setSize(3)
                 .build();
 
         cache.put("1", "1");
@@ -89,7 +89,7 @@ public class CacheBsTest {
     @Test
     public void cacheRemoveListenerTest() {
         ICache<String, String> cache = CacheBs.<String, String>newInstance()
-                .size(1)
+                .setSize(1)
                 .addRemoveListener(new MyRemoveListener<String, String>())
                 .build();
 
@@ -104,7 +104,7 @@ public class CacheBsTest {
     @Test
     public void loadTest() {
         ICache<String, String> cache = CacheBs.<String, String>newInstance()
-                .load(new MyCacheLoad())
+                .setLoad(new MyCacheLoad())
                 .build();
 
         Assert.assertEquals(2, cache.size());
@@ -117,8 +117,8 @@ public class CacheBsTest {
     @Test
     public void persistRdbTest() throws InterruptedException {
         ICache<String, String> cache = CacheBs.<String, String>newInstance()
-                .load(new MyCacheLoad())
-                .persist(CachePersistUtil.<String, String>dbJson("1.rdb"))
+                .setLoad(new MyCacheLoad())
+                .setPersist(CachePersistUtil.<String, String>dbJson("1.rdb"))
                 .build();
 
         Assert.assertEquals(2, cache.size());
@@ -132,7 +132,7 @@ public class CacheBsTest {
     @Test
     public void loadDbJsonTest() {
         ICache<String, String> cache = CacheBs.<String, String>newInstance()
-                .load(CacheLoadUtil.<String, String>dbJson("1.rdb"))
+                .setLoad(CacheLoadUtil.<String, String>dbJson("1.rdb"))
                 .build();
 
         Assert.assertEquals(2, cache.size());
@@ -160,7 +160,7 @@ public class CacheBsTest {
     @Test
     public void persistAofTest() throws InterruptedException {
         ICache<String, String> cache = CacheBs.<String, String>newInstance()
-                .persist(CachePersistUtil.<String, String>aof("1.aof"))
+                .setPersist(CachePersistUtil.<String, String>aof("1.aof"))
                 .build();
 
         cache.put("1", "1");
@@ -177,7 +177,7 @@ public class CacheBsTest {
     @Test
     public void loadAofTest() throws InterruptedException {
         ICache<String, String> cache = CacheBs.<String, String>newInstance()
-                .load(CacheLoadUtil.<String, String>aof("1.aof"))
+                .setLoad(CacheLoadUtil.<String, String>aof("1.aof"))
                 .build();
 
        // Assert.assertEquals(1, cache.size());

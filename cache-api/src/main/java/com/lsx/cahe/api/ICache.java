@@ -57,40 +57,40 @@ public interface ICache<K,V> extends Map<K,V> {
      * @return 处理类实现
      * @since 0.0.4
      */
-    ICacheExpire<K,V> expire();
+    ICacheExpire<K,V> getExpire();
 
     /**
      * 删除监听类列表
      * @return 监听器列表
      * @since 0.0.6
      */
-    List<ICacheRemoveListener<K,V>> removeListeners();
+    List<ICacheRemoveListener<K,V>> getRemoveListeners();
 
     /**
      * 慢日志监听类列表
      * @return 监听器列表
      * @since 0.0.9
      */
-    List<ICacheSlowListener> slowListeners();
+    List<ICacheSlowListener> getSlowListeners();
 
     /**
      * 加载信息
      * @return 加载信息
      * @since 0.0.7
      */
-    ICacheLoad<K,V> load();
+    ICacheLoad<K,V> getLoad();
 
     /**
      * 持久化类
      * @return 持久化类
      * @since 0.0.10
      */
-    ICachePersist<K,V> persist();
+    ICachePersist<K,V> getPersist();
 
     /**
      * 淘汰策略
      * @return 淘汰
      * @since 0.0.11
      */
-    ICacheEvict<K,V> evict();
+    ICacheEvict<K,V> getEvict();
 }

@@ -42,7 +42,7 @@ public class CacheSlowListenerContext implements ICacheSlowListenerContext {
     }
 
     @Override
-    public String methodName() {
+    public String getMethodName() {
         return methodName ;
     }
 
@@ -52,7 +52,7 @@ public class CacheSlowListenerContext implements ICacheSlowListenerContext {
     }
 
     @Override
-    public Object[] params() {
+    public Object[] getParams() {
         return params;
     }
 
@@ -64,7 +64,7 @@ public class CacheSlowListenerContext implements ICacheSlowListenerContext {
 
 
     @Override
-    public Object result() {
+    public Object getResult() {
         return result;
     }
 

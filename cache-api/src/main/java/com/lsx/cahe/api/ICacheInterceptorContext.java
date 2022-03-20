@@ -19,25 +19,25 @@ public interface ICacheInterceptorContext<K,V> {
      * 缓存信息
      * @return 缓存信息
      */
-    ICache<K,V> cache();
+    ICache<K,V> getCache();
 
     /**
      * 执行的方法信息
      * @return 方法
      */
-    Method method();
+    Method getMethod();
 
     /**
      * 执行的参数
      * @return 参数
      */
-    Object[] params();
+    Object[] getParams();
 
     /**
      * 方法执行的结果
      * @return 结果
      */
-    Object result();
+    Object getResult();
 
     /**
      * 开始时间

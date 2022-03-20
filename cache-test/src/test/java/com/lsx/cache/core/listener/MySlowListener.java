@@ -12,7 +12,7 @@ public class MySlowListener implements ICacheSlowListener {
 
     @Override
     public void listen(ICacheSlowListenerContext context) {
-        System.out.println("【慢日志】name: " + context.methodName());
+        System.out.println("【慢日志】name: " + context.getMethodName());
     }
 
     @Override

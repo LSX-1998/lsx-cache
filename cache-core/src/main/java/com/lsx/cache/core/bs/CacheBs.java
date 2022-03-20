@@ -76,7 +76,7 @@ public final class CacheBs<K,V> {
      * @return this
      * @since 0.0.2
      */
-    public CacheBs<K, V> map(Map<K, V> map) {
+    public CacheBs<K, V> setMap(Map<K, V> map) {
         ArgUtil.notNull(map, "map");
 
         this.map = map;
@@ -89,7 +89,7 @@ public final class CacheBs<K,V> {
      * @return this
      * @since 0.0.2
      */
-    public CacheBs<K, V> size(int size) {
+    public CacheBs<K, V> setSize(int size) {
         ArgUtil.notNegative(size, "size");
 
         this.size = size;
@@ -102,7 +102,7 @@ public final class CacheBs<K,V> {
      * @return this
      * @since 0.0.2
      */
-    public CacheBs<K, V> evict(ICacheEvict<K, V> evict) {
+    public CacheBs<K, V> setEvict(ICacheEvict<K, V> evict) {
         ArgUtil.notNull(evict, "evict");
 
         this.evict = evict;
@@ -115,7 +115,7 @@ public final class CacheBs<K,V> {
      * @return this
      * @since 0.0.7
      */
-    public CacheBs<K, V> load(ICacheLoad<K, V> load) {
+    public CacheBs<K, V> setLoad(ICacheLoad<K, V> load) {
         ArgUtil.notNull(load, "load");
 
         this.load = load;
@@ -154,7 +154,7 @@ public final class CacheBs<K,V> {
      * @return this
      * @since 0.0.8
      */
-    public CacheBs<K, V> persist(ICachePersist<K, V> persist) {
+    public CacheBs<K, V> setPersist(ICachePersist<K, V> persist) {
         this.persist = persist;
         return this;
     }
@@ -166,13 +166,13 @@ public final class CacheBs<K,V> {
      */
     public ICache<K,V> build() {
         Cache<K,V> cache = new Cache<>();
-        cache.map(map);
-        cache.evict(evict);
-        cache.sizeLimit(size);
-        cache.removeListeners(removeListeners);
-        cache.load(load);
-        cache.persist(persist);
-        cache.slowListeners(slowListeners);
+        cache.setMap(map);
+        cache.setEvict(evict);
+        cache.setSizeLimit(size);
+        cache.setRemoveListeners(removeListeners);
+        cache.setLoad(load);
+        cache.setPersist(persist);
+        cache.setSlowListeners(slowListeners);
 
         // 初始化
         cache.init();

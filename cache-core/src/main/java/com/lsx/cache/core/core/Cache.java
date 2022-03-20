@@ -78,7 +78,7 @@ public class Cache<K,V> implements ICache<K,V> {
      * @param map 实现
      * @return this
      */
-    public Cache<K, V> map(Map<K, V> map) {
+    public Cache<K, V> setMap(Map<K, V> map) {
         this.map = map;
         return this;
     }
@@ -88,7 +88,7 @@ public class Cache<K,V> implements ICache<K,V> {
      * @param sizeLimit 大小限制
      * @return this
      */
-    public Cache<K, V> sizeLimit(int sizeLimit) {
+    public Cache<K, V> setSizeLimit(int sizeLimit) {
         this.sizeLimit = sizeLimit;
         return this;
     }
@@ -100,7 +100,7 @@ public class Cache<K,V> implements ICache<K,V> {
      * @param cacheEvict 驱除策略
      * @return this
      */
-    public Cache<K, V> evict(ICacheEvict<K, V> cacheEvict) {
+    public Cache<K, V> setEvict(ICacheEvict<K, V> cacheEvict) {
         this.evict = cacheEvict;
         return this;
     }
@@ -118,7 +118,7 @@ public class Cache<K,V> implements ICache<K,V> {
      * 设置持久化策略
      * @param persist 持久化
      */
-    public void persist(ICachePersist<K, V> persist) {
+    public void setPersist(ICachePersist<K, V> persist) {
         this.persist = persist;
     }
 
@@ -127,7 +127,7 @@ public class Cache<K,V> implements ICache<K,V> {
      * 设置删除监听器
      * @param removeListeners 删除监听器
      */
-    public Cache<K, V> removeListeners(List<ICacheRemoveListener<K, V>> removeListeners) {
+    public Cache<K, V> setRemoveListeners(List<ICacheRemoveListener<K, V>> removeListeners) {
         this.removeListeners = removeListeners;
         return this;
     }
@@ -137,7 +137,7 @@ public class Cache<K,V> implements ICache<K,V> {
      * 设置慢日志监听器
      * @param slowListeners 慢日志监听器
      */
-    public Cache<K, V> slowListeners(List<ICacheSlowListener> slowListeners) {
+    public Cache<K, V> setSlowListeners(List<ICacheSlowListener> slowListeners) {
         this.slowListeners = slowListeners;
         return this;
     }
@@ -150,7 +150,7 @@ public class Cache<K,V> implements ICache<K,V> {
      * 设置缓存加载器
      * @param load 缓存加载器
      */
-    public Cache<K, V> load(ICacheLoad<K, V> load) {
+    public Cache<K, V> setLoad(ICacheLoad<K, V> load) {
         this.load = load;
         return this;
     }
@@ -177,10 +177,10 @@ public class Cache<K,V> implements ICache<K,V> {
         // 添加拦截器调用
         if(ObjectUtil.isNotNull(entry)) {
             // 执行淘汰监听器
-            ICacheRemoveListenerContext<K,V> removeListenerContext = CacheRemoveListenerContext.<K,V>newInstance().key(entry.key())
-                    .value(entry.value())
+            ICacheRemoveListenerContext<K,V> removeListenerContext = CacheRemoveListenerContext.<K,V>newInstance().key(entry.getKey())
+                    .value(entry.getValue())
                     .type(CacheRemoveType.EVICT.code());
-            for(ICacheRemoveListener<K,V> listener : context.cache().removeListeners()) {
+            for(ICacheRemoveListener<K,V> listener : context.getCache().getRemoveListeners()) {
                 listener.listen(removeListenerContext);
             }
         }
@@ -299,33 +299,33 @@ public class Cache<K,V> implements ICache<K,V> {
 
     @Override
     @CacheInterceptor
-    public ICacheExpire<K, V> expire() {
+    public ICacheExpire<K, V> getExpire() {
         return this.expire ;
     }
 
     @Override
     @CacheInterceptor
-    public List<ICacheRemoveListener<K, V>> removeListeners() {
+    public List<ICacheRemoveListener<K, V>> getRemoveListeners() {
         return this.removeListeners;
     }
 
     @Override
-    public List<ICacheSlowListener> slowListeners() {
+    public List<ICacheSlowListener> getSlowListeners() {
         return this.slowListeners;
     }
 
     @Override
-    public ICacheLoad<K, V> load() {
+    public ICacheLoad<K, V> getLoad() {
         return this.load;
     }
 
     @Override
-    public ICachePersist<K, V> persist() {
+    public ICachePersist<K, V> getPersist() {
         return this.persist;
     }
 
     @Override
-    public ICacheEvict<K, V> evict() {
+    public ICacheEvict<K, V> getEvict() {
         return this.evict;
     }
 }

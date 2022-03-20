@@ -21,10 +21,10 @@ public class CacheInterceptorEvict<K,V> implements ICacheInterceptor<K,V> {
     @Override
     @SuppressWarnings("all")
     public void after(ICacheInterceptorContext<K, V> context) {
-        ICacheEvict<K,V> evict = context.cache().evict();
+        ICacheEvict<K,V> evict = context.getCache().getEvict();
 
-        Method method = context.method();
-        final K key = (K) context.params()[0];
+        Method method = context.getMethod();
+        final K key = (K) context.getParams()[0];
         if("remove".equals(method.getName())) {
             evict.removeKey(key);
         } else {

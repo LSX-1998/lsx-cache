@@ -44,7 +44,7 @@ public class CachePersistDbJson<K,V> extends CachePersistAdaptor<K,V> {
 
         for(Map.Entry<K,V> entry:entrySet){
             K key = entry.getKey();
-            Long expireTime = cache.expire().expireTime(key) ;
+            Long expireTime = cache.getExpire().expireTime(key) ;
             PersistRdbEntry<K,V> persistEntry = new PersistRdbEntry<>() ;
             persistEntry.setKey(key);
             persistEntry.setValue(entry.getValue());

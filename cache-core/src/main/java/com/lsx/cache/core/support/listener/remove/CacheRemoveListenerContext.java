@@ -34,7 +34,7 @@ public class CacheRemoveListenerContext<K,V> implements ICacheRemoveListenerCont
 
 
     @Override
-    public K key() {
+    public K getKey() {
         return this.key;
     }
 
@@ -44,7 +44,7 @@ public class CacheRemoveListenerContext<K,V> implements ICacheRemoveListenerCont
     }
 
     @Override
-    public V value() {
+    public V getValue() {
         return this.value;
     }
 
@@ -54,7 +54,7 @@ public class CacheRemoveListenerContext<K,V> implements ICacheRemoveListenerCont
     }
 
     @Override
-    public String type() {
+    public String getType() {
         return this.type;
     }
 

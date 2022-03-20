@@ -38,12 +38,12 @@ public class CacheEntry<K,V> implements ICacheEntry<K,V> {
     }
 
     @Override
-    public K key() {
+    public K getKey() {
         return key;
     }
 
     @Override
-    public V value() {
+    public V getValue() {
         return value;
     }
 

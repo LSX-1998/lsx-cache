@@ -17,8 +17,8 @@ public class CacheInterceptorRefresh<K,V> implements ICacheInterceptor<K, V> {
     @Override
     public void before(ICacheInterceptorContext<K,V> context) {
         log.debug("Refresh start");
-        final ICache<K,V> cache = context.cache();
-        cache.expire().refreshExpire(cache.keySet());
+        final ICache<K,V> cache = context.getCache();
+        cache.getExpire().refreshExpire(cache.keySet());
     }
 
     @Override

@@ -41,7 +41,7 @@ public class CacheInterceptorContext<K,V> implements ICacheInterceptorContext<K,
 
 
     @Override
-    public ICache<K, V> cache() {
+    public ICache<K, V> getCache() {
         return cache;
     }
 
@@ -51,7 +51,7 @@ public class CacheInterceptorContext<K,V> implements ICacheInterceptorContext<K,
     }
 
     @Override
-    public Method method() {
+    public Method getMethod() {
         return method;
     }
 
@@ -61,7 +61,7 @@ public class CacheInterceptorContext<K,V> implements ICacheInterceptorContext<K,
     }
 
     @Override
-    public Object[] params() {
+    public Object[] getParams() {
         return params;
     }
 
@@ -71,7 +71,7 @@ public class CacheInterceptorContext<K,V> implements ICacheInterceptorContext<K,
     }
 
     @Override
-    public Object result() {
+    public Object getResult() {
         return result;
     }
 

@@ -16,7 +16,7 @@ public class CacheSlowListener implements ICacheSlowListener {
     @Override
     public void listen(ICacheSlowListenerContext context) {
         log.warn("[Slow] methodName: {}, params: {}, cost time: {}",
-                context.methodName(), JSON.toJSON(context.params()), context.costTimeMills());
+                context.getMethodName(), JSON.toJSON(context.getParams()), context.costTimeMills());
     }
 
     @Override

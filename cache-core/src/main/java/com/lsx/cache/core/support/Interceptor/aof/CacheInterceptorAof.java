@@ -21,15 +21,15 @@ public class CacheInterceptorAof<K,V> implements ICacheInterceptor<K,V> {
 
     @Override
     public void after(ICacheInterceptorContext<K, V> context) {
-        ICache<K,V> cache = context.cache() ;
-        ICachePersist<K,V> persist = cache.persist() ;
+        ICache<K,V> cache = context.getCache() ;
+        ICachePersist<K,V> persist = cache.getPersist() ;
 
         if(persist instanceof CachePersistAof){
             CachePersistAof<K,V> cachePersistAof = (CachePersistAof<K, V>) persist;
-            String methodName = context.method().getName();
+            String methodName = context.getMethod().getName();
             PersistAofEntry aofEntry = PersistAofEntry.newInstance() ;
             aofEntry.setMethodName(methodName);
-            aofEntry.setParams(context.params());
+            aofEntry.setParams(context.getParams());
 
             String json = JSON.toJSONString(aofEntry) ;
 

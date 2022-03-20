@@ -29,30 +29,30 @@ public class CacheContext<K,V> implements ICacheContext<K, V> {
 
 
 
-    public CacheContext<K, V> cacheEvict(ICacheEvict<K, V> cacheEvict) {
+    public CacheContext<K, V> setCacheEvict(ICacheEvict<K, V> cacheEvict) {
         this.cacheEvict = cacheEvict;
         return this;
     }
 
-    public CacheContext<K, V> map(Map<K, V> map) {
+    public CacheContext<K, V> setMap(Map<K, V> map) {
         this.map = map;
         return this;
     }
 
     @Override
-    public Map<K, V> map() {
+    public Map<K, V> getMap() {
         return map ;
     }
 
 
 
     @Override
-    public int size() {
+    public int getSize() {
         return size ;
     }
 
     @Override
-    public ICacheEvict<K, V> cacheEvict() {
+    public ICacheEvict<K, V> getCacheEvict() {
         return cacheEvict ;
     }
 }

@@ -14,17 +14,17 @@ public interface ICacheRemoveListenerContext<K,V> {
      * 清空的 key
      * @return key
      */
-    K key();
+    K getKey();
 
     /**
      * 值
      * @return 值
      */
-    V value();
+    V getValue();
 
     /**
      * 删除类型
      * @return 类型
      */
-    String type();
+    String getType();
 }

@@ -158,8 +158,8 @@ public class CacheEvictLfu<K,V> extends AbstractCacheEvict<K,V> {
     protected ICacheEntry<K, V> doEvict(ICacheEvictContext<K, V> context) {
         ICacheEntry<K,V> result = null ;
 
-        ICache<K, V> cache = context.cache();
-        if(cache.size()>=context.size()){
+        ICache<K, V> cache = context.getCache();
+        if(cache.size()>=context.getSize()){
             FreqNode<K, V> minFreqNode = this.getMinFreqNode();
             K evictKey = minFreqNode.key();
             V evictValue = cache.remove(evictKey);

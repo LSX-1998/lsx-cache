@@ -13,7 +13,7 @@ public class CacheRemoveListener<K,V> implements ICacheRemoveListener<K,V> {
     public void listen(ICacheRemoveListenerContext<K,V> context) {
 
         log.debug("Remove key: {}, value: {}, type: {}",
-                context.key(), context.value(), context.type());
+                context.getKey(), context.getValue(), context.getType());
 
     }
 }

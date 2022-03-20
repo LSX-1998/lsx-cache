@@ -8,10 +8,10 @@ public interface ICacheEntry<K,V> {
     /**
      * @return key
      */
-    K key();
+    K getKey();
 
     /**
      * @return value
      */
-    V value();
+    V getValue();
 }

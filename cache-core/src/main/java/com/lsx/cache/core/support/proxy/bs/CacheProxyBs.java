@@ -130,7 +130,7 @@ public final class CacheProxyBs {
             }
 
             //3. AOF 追加
-            final ICachePersist cachePersist = cache.persist();
+            final ICachePersist cachePersist = cache.getPersist();
             if(cacheInterceptor.aof() && (cachePersist instanceof CachePersistAof)) {
                 if(before) {
                     persistInterceptors.before(interceptorContext);

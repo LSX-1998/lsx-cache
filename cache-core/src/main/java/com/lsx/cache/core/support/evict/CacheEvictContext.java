@@ -36,17 +36,17 @@ public class CacheEvictContext<K,V> implements ICacheEvictContext<K,V> {
     private int size;
 
     @Override
-    public K key() {
+    public K getKey() {
         return key;
     }
 
     @Override
-    public ICache<K,V> cache() {
+    public ICache<K,V> getCache() {
         return cache;
     }
 
     @Override
-    public int size() {
+    public int getSize() {
         return size;
     }
 
