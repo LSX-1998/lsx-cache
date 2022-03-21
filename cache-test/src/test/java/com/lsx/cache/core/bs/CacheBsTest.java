@@ -28,15 +28,17 @@ public class CacheBsTest {
     @Test
     public void helloTest() {
         ICache<String, String> cache = CacheBs.<String, String>newInstance()
-                .setSize(2)
+                .setSize(1)
                 .build();
 
         cache.put("1", "1");
         cache.put("2", "2");
         cache.put("3", "3");
         cache.put("4", "4");
+        cache.put("5","5");
+        cache.put("hello,lsx","hello,lsx");
 
-        Assert.assertEquals(2, cache.size());
+        Assert.assertEquals(1, cache.size());
         System.out.println(cache.keySet());
     }
 
