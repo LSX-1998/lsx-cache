@@ -291,7 +291,7 @@ public class Cache<K,V> implements ICache<K,V> {
      * @return this
      */
     @Override
-    @CacheInterceptor(aof = false)
+    @CacheInterceptor(aof = true)
     public ICache<K, V> expireAt(K key, long timeInMills) {
          this.expire.expire(key,timeInMills);
          return this ;

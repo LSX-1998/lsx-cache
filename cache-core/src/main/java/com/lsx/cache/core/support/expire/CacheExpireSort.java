@@ -5,6 +5,7 @@ import com.lsx.cahe.api.ICacheExpire;
 
 
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -24,7 +25,7 @@ public class CacheExpireSort<K,V> implements ICacheExpire<K,V> {
      *
      * 空间换时间
      */
-    private final Map<K, Long> expireMap = new HashMap<>();
+    private final Map<K, Long> expireMap = new ConcurrentHashMap<>();
 
 
     /**
@@ -158,6 +159,7 @@ public class CacheExpireSort<K,V> implements ICacheExpire<K,V> {
 
                 List<K> expireKeys = sortMap.get(expireTime);
                 expireKeys.remove(key);
+                cache.remove(key) ;
                 sortMap.put(expireTime, expireKeys);
             }
         }

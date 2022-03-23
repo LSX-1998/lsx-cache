@@ -8,6 +8,7 @@ import com.lsx.cahe.api.ICacheExpire;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -30,7 +31,7 @@ public class CacheExpire<K,V> implements ICacheExpire<K,V> {
      *
      * 空间换时间
      */
-    private final Map<K, Long> expireMap = new HashMap<>();
+    private final Map<K, Long> expireMap = new ConcurrentHashMap<>();
 
     /**
      * 缓存实现
